@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>كورس التصميم الشامل</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #13131a;
+    --card: #1a1a25;
+    --border: #2a2a3a;
+    --accent: #ff6b35;
+    --accent2: #4ecdc4;
+    --accent3: #ffe66d;
+    --accent4: #a855f7;
+    --text: #f0f0f5;
+    --muted: #8888aa;
+    --serif: 'Cairo', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--serif);
+    line-height: 1.8;
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,107,53,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 10% 100%, rgba(78,205,196,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 90% 80%, rgba(168,85,247,0.10) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 6px 20px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    position: relative;
+    animation: fadeDown 0.8s ease both;
+  }
+  .hero h1 {
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.15;
+    position: relative;
+    animation: fadeDown 0.8s 0.2s ease both;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p.sub {
+    font-size: 1.1rem;
+    color: var(--muted);
+    max-width: 580px;
+    margin: 1.5rem auto 0;
+    position: relative;
+    animation: fadeDown 0.8s 0.4s ease both;
+  }
+  .chapters-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 3rem;
+    position: relative;
+    animation: fadeDown 0.8s 0.6s ease both;
+  }
+  .chapters-nav a {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 8px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+  .chapters-nav a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ===== LAYOUT ===== */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+
+  .chapter {
+    padding: 5rem 0 3rem;
+    border-top: 1px solid var(--border);
+  }
+  .chapter-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .chapter-label .num {
+    background: var(--accent);
+    color: #fff;
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 900;
+  }
+  .chapter h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 900;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .chapter .intro {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 700px;
+    margin-bottom: 3rem;
+    border-right: 3px solid var(--accent);
+    padding-right: 1rem;
+  }
+
+  /* ===== CARDS ===== */
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .card .icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+  .card p { color: var(--muted); font-size: 0.9rem; }
+
+  /* ===== COMPARE TABLE ===== */
+  .compare {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 2rem 0;
+  }
+  .compare table { width: 100%; border-collapse: collapse; }
+  .compare th {
+    padding: 1rem 1.5rem;
+    text-align: right;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .compare td {
+    padding: 0.9rem 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.9rem;
+    color: var(--muted);
+    vertical-align: top;
+  }
+  .compare td strong { color: var(--text); display: block; margin-bottom: 2px; }
+  .compare tr:hover td { background: rgba(255,255,255,0.02); }
+  .th-rgb { background: rgba(78,205,196,0.1); color: var(--accent2); }
+  .th-cmyk { background: rgba(255,107,53,0.1); color: var(--accent); }
+  .th-label { background: var(--surface); color: var(--muted); }
+
+  /* ===== COLOR SWATCHES ===== */
+  .color-demo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  .color-box {
+    border-radius: 16px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .rgb-box {
+    background: linear-gradient(135deg, #ff0000 0%, #00ff00 50%, #0000ff 100%);
+  }
+  .cmyk-box {
+    background: linear-gradient(135deg, #00b4d8 0%, #e63946 40%, #f4a261 70%, #2b2d42 100%);
+  }
+  .color-box .label {
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 0.8rem 1.2rem;
+    display: inline-block;
+  }
+  .color-box .label h3 { font-size: 1.3rem; font-weight: 900; color: #fff; }
+  .color-box .label p { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+
+  /* ===== PPI/DPI VISUAL ===== */
+  .ppi-demo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .ppi-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .pixel-grid {
+    display: grid;
+    margin: 0 auto 1rem;
+    gap: 2px;
+    width: 80px; height: 80px;
+  }
+  .pixel-grid .px { background: var(--accent); border-radius: 1px; }
+  .grid-low { grid-template-columns: repeat(4, 1fr); }
+  .grid-med { grid-template-columns: repeat(6, 1fr); }
+  .grid-hi { grid-template-columns: repeat(10, 1fr); }
+  .grid-low .px { background: var(--accent3); }
+  .grid-med .px { background: var(--accent2); }
+  .grid-hi .px { background: var(--accent4); }
+  .ppi-card h3 { font-size: 1.4rem; font-weight: 900; }
+  .ppi-card p { font-size: 0.8rem; color: var(--muted); margin-top: 0.3rem; }
+  .ppi-card .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-top: 0.5rem;
+  }
+  .tag-web { background: rgba(78,205,196,0.15); color: var(--accent2); }
+  .tag-screen { background: rgba(255,230,109,0.15); color: var(--accent3); }
+  .tag-print { background: rgba(168,85,247,0.15); color: var(--accent4); }
+
+  /* ===== TYPOGRAPHY DEMO ===== */
+  .type-demo {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  .type-demo h3 { color: var(--muted); font-size: 0.8rem; margin-bottom: 1rem; letter-spacing: 2px; }
+  .font-sizes { display: flex; flex-direction: column; gap: 0.5rem; }
+  .font-row { display: flex; align-items: baseline; gap: 1rem; }
+  .font-row .sz { color: var(--muted); font-size: 0.75rem; min-width: 40px; }
+  .font-row .sample { font-weight: 700; }
+
+  /* ===== PRINCIPLES ===== */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .principle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .principle::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    border-radius: 0 12px 0 100%;
+    opacity: 0.15;
+  }
+  .p1::before { background: var(--accent); }
+  .p2::before { background: var(--accent2); }
+  .p3::before { background: var(--accent3); }
+  .p4::before { background: var(--accent4); }
+  .p5::before { background: #f72585; }
+  .p6::before { background: #4cc9f0; }
+  .principle .num {
+    font-size: 2.5rem;
+    font-weight: 900;
+    opacity: 0.08;
+    position: absolute;
+    top: 0.5rem;
+    left: 1rem;
+  }
+  .principle h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .principle p { font-size: 0.82rem; color: var(--muted); }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight {
+    background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(78,205,196,0.08));
+    border: 1px solid rgba(255,107,53,0.25);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .highlight .bulb { font-size: 1.5rem; flex-shrink: 0; }
+  .highlight p { font-size: 0.9rem; color: var(--text); }
+  .highlight strong { color: var(--accent); }
+
+  /* ===== RULE ===== */
+  .rule-box {
+    border: 1px solid var(--border);
+    border-right: 4px solid var(--accent3);
+    background: var(--card);
+    border-radius: 0 12px 12px 0;
+    padding: 1.2rem 1.5rem;
+    margin: 1.2rem 0;
+  }
+  .rule-box .rule-name { font-weight: 700; color: var(--accent3); margin-bottom: 0.3rem; }
+  .rule-box p { font-size: 0.9rem; color: var(--muted); }
+
+  /* ===== TOOLS GRID ===== */
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin: 2rem 0; }
+  .tool-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .tool-card:hover { border-color: var(--accent2); transform: translateY(-2px); }
+  .tool-card .t-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+  .tool-card h3 { font-size: 0.95rem; font-weight: 700; }
+  .tool-card p { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; }
+  .tool-card .t-tag {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  /* ===== FILE FORMATS ===== */
+  .formats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.8rem; margin: 1.5rem 0; }
+  .fmt {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .fmt .ext { font-size: 1.4rem; font-weight: 900; font-family: monospace; margin-bottom: 0.4rem; }
+  .fmt p { font-size: 0.75rem; color: var(--muted); }
+
+  /* ===== PROCESS ===== */
+  .process { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+  .step {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+  .step::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 40px;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(var(--border), transparent);
+  }
+  .step:last-child::after { display: none; }
+  .step-num {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 0.9rem;
+    flex-shrink: 0;
+    color: var(--accent);
+  }
+  .step-content h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .step-content p { font-size: 0.87rem; color: var(--muted); }
+
+  /* ===== SPACING VISUAL ===== */
+  .spacing-demo {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  .spacing-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+  }
+  .spacing-row .sz-label { color: var(--muted); min-width: 50px; font-size: 0.78rem; }
+  .spacing-bar {
+    height: 28px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    opacity: 0.7;
+    display: flex; align-items: center; padding: 0 0.5rem;
+    font-size: 0.72rem; font-weight: 700; color: #fff; white-space: nowrap;
+  }
+
+  /* ===== CONTRAST DEMO ===== */
+  .contrast-demo { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .con-box {
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .con-bad { background: #999; color: #aaa; border: 2px solid rgba(255,0,0,0.3); }
+  .con-good { background: #1a1a1a; color: #ffffff; border: 2px solid rgba(78,205,196,0.3); }
+  .con-box .con-label { font-size: 0.7rem; font-weight: 700; margin-bottom: 0.5rem; opacity: 0.7; }
+  .con-box .con-text { font-size: 1rem; font-weight: 700; }
+  .con-box .con-ratio { font-size: 0.75rem; margin-top: 0.5rem; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  footer span { color: var(--accent); }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 0;
+  }
+
+  /* ===== INLINE TAG ===== */
+  .tag-inline {
+    display: inline-block;
+    background: rgba(255,107,53,0.12);
+    color: var(--accent);
+    border-radius: 5px;
+    padding: 1px 8px;
+    font-size: 0.85em;
+    font-weight: 700;
+  }
+
+  /* ===== LIST ===== */
+  .styled-list { list-style: none; padding: 0; margin: 1rem 0; }
+  .styled-list li {
+    padding: 0.6rem 0 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.92rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .styled-list li:last-child { border: 0; }
+  .styled-list li::before {
+    content: '◆';
+    color: var(--accent);
+    font-size: 0.5rem;
+    margin-top: 6px;
+    flex-shrink: 0;
+  }
+  .styled-list li span { color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .color-demo, .ppi-demo, .contrast-demo { grid-template-columns: 1fr; }
+    .compare th, .compare td { padding: 0.7rem 1rem; font-size: 0.82rem; }
+    .ppi-demo { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-badge">كورس التصميم الشامل</div>
+  <h1>من <span>الصفر</span><br>إلى المحترف</h1>
+  <p class="sub">كل شيء تحتاج معرفته في التصميم — من أبسط المفاهيم إلى أعمق التفاصيل التقنية، مرتّب ومتسلسل خطوة بخطوة.</p>
+  <nav class="chapters-nav">
+    <a href="#ch1">١. ما هو التصميم؟</a>
+    <a href="#ch2">٢. اللون</a>
+    <a href="#ch3">٣. RGB vs CMYK</a>
+    <a href="#ch4">٤. الدقة PPI/DPI</a>
+    <a href="#ch5">٥. التايبوغرافي</a>
+    <a href="#ch6">٦. المساحة والتخطيط</a>
+    <a href="#ch7">٧. مبادئ التصميم</a>
+    <a href="#ch8">٨. صيغ الملفات</a>
+    <a href="#ch9">٩. الأدوات</a>
+    <a href="#ch10">١٠. سير العمل</a>
+  </nav>
+</section>
+
+<!-- ==================== CHAPTER 1 ==================== -->
+<section class="chapter" id="ch1">
+  <div class="container">
+    <div class="chapter-label"><div class="num">١</div> الأساسيات</div>
+    <h2>ما هو التصميم؟</h2>
+    <p class="intro">التصميم ليس مجرد "تجميل"، بل هو حل مشاكل بصرية. كل قرار في التصميم له سبب — من اختيار اللون إلى حجم الخط.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>التصميم = حل مشكلة</h3>
+        <p>قبل أي تصميم اسأل: ما المشكلة التي أحلّها؟ من الجمهور؟ ما الرسالة؟</p>
+      </div>
+      <div class="card">
+        <div class="icon">👁️</div>
+        <h3>التصميم للمستخدم</h3>
+        <p>التصميم الجيد يخدم المستخدم أولاً، وليس ذوق المصمّم فقط.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚖️</div>
+        <h3>الشكل vs الوظيفة</h3>
+        <p>أفضل التصاميم تجمع بين الجمال والوظيفة في آنٍ واحد.</p>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="bulb">💡</div>
+      <p>القاعدة الذهبية: إذا كنت بحاجة إلى شرح تصميمك للمستخدم — فهو <strong>يحتاج مراجعة</strong>. التصميم الجيد واضح بنفسه.</p>
+    </div>
+
+    <div class="principles">
+      <div class="principle p1"><div class="num">01</div><h3>التوازن</h3><p>توزيع العناصر بشكل متوازن أو متعمد اللاتوازن.</p></div>
+      <div class="principle p2"><div class="num">02</div><h3>التباين</h3><p>الفرق البصري بين العناصر لإبراز الأهم.</p></div>
+      <div class="principle p3"><div class="num">03</div><h3>التكرار</h3><p>تناسق العناصر المتكررة يخلق هوية بصرية.</p></div>
+      <div class="principle p4"><div class="num">04</div><h3>القرب</h3><p>العناصر المترابطة تُجمَع بصرياً.</p></div>
+      <div class="principle p5"><div class="num">05</div><h3>المحاذاة</h3><p>لا شيء عشوائي — كل عنصر له ارتباط بصري.</p></div>
+      <div class="principle p6"><div class="num">06</div><h3>التسلسل الهرمي</h3><p>يوجّه العين نحو الأهم ثم الأقل أهمية.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 2 ==================== -->
+<section class="chapter" id="ch2">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٢</div> نظرية الألوان</div>
+    <h2>اللون من الألف إلى الياء</h2>
+    <p class="intro">اللون له علم وله قواعد. فهم نظرية الألوان يجعل اختياراتك مبنية على أساس، لا على الصدفة.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon" style="color:#ef233c">🔴</div>
+        <h3>الألوان الأساسية</h3>
+        <p>أحمر، أصفر، أزرق — لا يمكن الحصول عليها بخلط غيرها.</p>
+      </div>
+      <div class="card">
+        <div class="icon" style="color:#f77f00">🟠</div>
+        <h3>الألوان الثانوية</h3>
+        <p>برتقالي (أحمر+أصفر)، أخضر (أصفر+أزرق)، بنفسجي (أحمر+أزرق).</p>
+      </div>
+      <div class="card">
+        <div class="icon" style="color:#06d6a0">🟢</div>
+        <h3>الألوان الثلاثية</h3>
+        <p>خلط لون أساسي مع ثانوي مجاور له على العجلة اللونية.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <table>
+        <tr>
+          <th class="th-label">نظام المزج</th>
+          <th class="th-rgb">الألوان المتكاملة</th>
+          <th class="th-cmyk">الألوان المتناسبة</th>
+          <th style="background:rgba(168,85,247,0.1);color:var(--accent4)">المتشابهة</th>
+        </tr>
+        <tr>
+          <td><strong>التعريف</strong></td>
+          <td>ألوان متقابلة على العجلة</td>
+          <td>3 ألوان متباعدة بالتساوي</td>
+          <td>ألوان متجاورة على العجلة</td>
+        </tr>
+        <tr>
+          <td><strong>مثال</strong></td>
+          <td>أحمر + أخضر</td>
+          <td>أحمر + أصفر + أزرق</td>
+          <td>أزرق + أزرق-أخضر + أخضر</td>
+        </tr>
+        <tr>
+          <td><strong>الاستخدام</strong></td>
+          <td>تباين قوي وجذاب</td>
+          <td>حيوية وتنوع</td>
+          <td>انسجام وهدوء</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="type-demo">
+      <h3>مصطلحات اللون الأساسية</h3>
+      <ul class="styled-list">
+        <li><strong>Hue (الصبغة)</strong> <span>— اللون الأساسي نفسه: أحمر، أزرق، أخضر...</span></li>
+        <li><strong>Saturation (التشبع)</strong> <span>— مدى نقاء اللون أو خفوته. 100% = نقي تماماً، 0% = رمادي.</span></li>
+        <li><strong>Brightness / Value (السطوع)</strong> <span>— مدى إضاءة اللون أو ظلامه.</span></li>
+        <li><strong>Tint (الفاتح)</strong> <span>— اللون + أبيض.</span></li>
+        <li><strong>Shade (الداكن)</strong> <span>— اللون + أسود.</span></li>
+        <li><strong>Tone (النبرة)</strong> <span>— اللون + رمادي.</span></li>
+      </ul>
+    </div>
+
+    <div class="highlight">
+      <div class="bulb">🎨</div>
+      <p>قاعدة <strong>60-30-10</strong>: في أي تصميم — اجعل اللون الرئيسي 60%، اللون الثانوي 30%، ولون التمييز 10% فقط. هذه المعادلة تُنتج تصاميم متوازنة دائماً.</p>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">ألوان وسيكولوجيتها</h3>
+    <div class="cards">
+      <div class="card" style="border-color:rgba(239,35,60,0.3)"><div class="icon">🔴</div><h3>الأحمر</h3><p>طاقة، عاجل، عاطفة، خطر. يُستخدم في: تخفيضات، تنبيهات، طعام وشراب.</p></div>
+      <div class="card" style="border-color:rgba(247,127,0,0.3)"><div class="icon">🟠</div><h3>البرتقالي</h3><p>حماس، إبداع، دفء. يُستخدم في: تقنية، ترفيه، شباب.</p></div>
+      <div class="card" style="border-color:rgba(255,230,109,0.3)"><div class="icon">🟡</div><h3>الأصفر</h3><p>سعادة، تفاؤل، انتباه. استخدامه بحذر — يُتعب العين بكثرة.</p></div>
+      <div class="card" style="border-color:rgba(6,214,160,0.3)"><div class="icon">🟢</div><h3>الأخضر</h3><p>طبيعة، صحة، نمو، نجاح مالي. الأكثر ارتياحاً للعين.</p></div>
+      <div class="card" style="border-color:rgba(67,97,238,0.3)"><div class="icon">🔵</div><h3>الأزرق</h3><p>ثقة، احترافية، هدوء، تقنية. الأكثر استخداماً في شعارات الشركات.</p></div>
+      <div class="card" style="border-color:rgba(168,85,247,0.3)"><div class="icon">🟣</div><h3>البنفسجي</h3><p>فخامة، إبداع، غموض، روحانية.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 3 ==================== -->
+<section class="chapter" id="ch3">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٣</div> أنظمة الألوان</div>
+    <h2>RGB vs CMYK — الفرق الجوهري</h2>
+    <p class="intro">هذا السؤال يربك المبتدئين كثيراً. الإجابة بسيطة: الفرق يعتمد على <strong>أين سيُعرض</strong> تصميمك — شاشة أم ورق.</p>
+
+    <div class="color-demo">
+      <div class="color-box rgb-box">
+        <div class="label">
+          <h3>RGB</h3>
+          <p>الشاشة — الضوء</p>
+        </div>
+      </div>
+      <div class="color-box cmyk-box">
+        <div class="label">
+          <h3>CMYK</h3>
+          <p>الطباعة — الحبر</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <table>
+        <thead>
+          <tr>
+            <th class="th-label">المقارنة</th>
+            <th class="th-rgb">🖥️ RGB</th>
+            <th class="th-cmyk">🖨️ CMYK</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>الاسم الكامل</strong></td>
+            <td>Red, Green, Blue</td>
+            <td>Cyan, Magenta, Yellow, Key (Black)</td>
+          </tr>
+          <tr>
+            <td><strong>نوع المزج</strong></td>
+            <td><strong style="color:var(--accent2)">مضيف (Additive)</strong><span><br>الألوان تُضاف فوق بعض → تُنتج الأبيض</span></td>
+            <td><strong style="color:var(--accent)">طرحي (Subtractive)</strong><span><br>الألوان تطرح الضوء → تُنتج الأسود</span></td>
+          </tr>
+          <tr>
+            <td><strong>كيف يعمل؟</strong></td>
+            <td>بكسلات تُشعّ ضوءاً ملوناً</td>
+            <td>نقاط حبر تمتص الضوء وتعكس اللون</td>
+          </tr>
+          <tr>
+            <td><strong>النطاق اللوني (Gamut)</strong></td>
+            <td>أوسع — يمكنه عرض ألوان نيون ومضيئة جداً</td>
+            <td>أضيق — بعض الألوان "تنكسر" عند الطباعة</td>
+          </tr>
+          <tr>
+            <td><strong>القيم</strong></td>
+            <td>0–255 لكل قناة (R, G, B)</td>
+            <td>0–100% لكل قناة (C, M, Y, K)</td>
+          </tr>
+          <tr>
+            <td><strong>الأبيض</strong></td>
+            <td>RGB (255, 255, 255) = كل الضوء</td>
+            <td>CMYK (0, 0, 0, 0) = لا حبر = الورقة البيضاء</td>
+          </tr>
+          <tr>
+            <td><strong>الأسود</strong></td>
+            <td>RGB (0, 0, 0) = لا ضوء</td>
+            <td>K=100 (الكانال الرابع للأسود)</td>
+          </tr>
+          <tr>
+            <td><strong>استخدام</strong></td>
+            <td>مواقع، تطبيقات، صور رقمية، شاشات</td>
+            <td>طباعة: بروشور، كروت، كتب، ملصقات</td>
+          </tr>
+          <tr>
+            <td><strong>صيغ الملفات الشائعة</strong></td>
+            <td>.PNG, .JPEG, .GIF, .WebP, .SVG</td>
+            <td>.PDF, .EPS, .TIFF, .AI</td>
+          </tr>
+          <tr>
+            <td><strong>برامج التصميم</strong></td>
+            <td>Figma, Photoshop (للشاشة)</td>
+            <td>Illustrator, InDesign, Photoshop (للطباعة)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="highlight">
+      <div class="bulb">⚠️</div>
+      <p><strong>المشكلة الشائعة:</strong> تصمّم بـ RGB على الشاشة ثم تطبعه → الألوان تبدو باهتة ومختلفة. الحل: <strong>ابدأ التصميم المطبوع بـ CMYK من البداية</strong>، أو حوّله قبل الإرسال للطباعة.</p>
+    </div>
+
+    <div class="rule-box">
+      <div class="rule-name">📌 القاعدة السهلة للتذكر</div>
+      <p>الشاشة = ضوء = RGB | الورق = حبر = CMYK</p>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">نظام إضافي: HSL / HSB</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🎡</div>
+        <h3>HSL / HSB</h3>
+        <p><span class="tag-inline">H</span> Hue (الصبغة 0°-360°) + <span class="tag-inline">S</span> Saturation (التشبع) + <span class="tag-inline">L/B</span> Lightness/Brightness. الأسهل للبشر فهمه وتعديله.</p>
+      </div>
+      <div class="card">
+        <div class="icon">#️⃣</div>
+        <h3>Hex Code</h3>
+        <p>تشفير ست خانات سداسي عشري للون: <span class="tag-inline">#FF6B35</span> = R:255, G:107, B:53. يُستخدم في الويب والكود.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔲</div>
+        <h3>Pantone (PMS)</h3>
+        <p>ألوان معيارية مرقّمة للطباعة. تضمن تطابق اللون تماماً بأي مطبعة في العالم. يُستخدم في الهوية البصرية للشركات.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 4 ==================== -->
+<section class="chapter" id="ch4">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٤</div> الدقة والحجم</div>
+    <h2>PPI و DPI — كل الفروقات</h2>
+    <p class="intro">هذا المفهوم يُسبّب أكثر الأخطاء شيوعاً في التصميم. نتعلمه مرة وإلى الأبد.</p>
+
+    <div class="compare">
+      <table>
+        <thead>
+          <tr>
+            <th class="th-label">المقارنة</th>
+            <th class="th-rgb">PPI</th>
+            <th class="th-cmyk">DPI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>الاسم الكامل</strong></td>
+            <td>Pixels Per Inch<br><span style="color:var(--muted);font-size:0.82rem">بكسل في البوصة</span></td>
+            <td>Dots Per Inch<br><span style="color:var(--muted);font-size:0.82rem">نقطة في البوصة</span></td>
+          </tr>
+          <tr>
+            <td><strong>ينتمي إلى</strong></td>
+            <td>الصور الرقمية والشاشات</td>
+            <td>الطباعة والطابعات</td>
+          </tr>
+          <tr>
+            <td><strong>ما يقيسه</strong></td>
+            <td>كثافة البكسلات في الصورة الرقمية</td>
+            <td>كثافة نقاط الحبر التي تطبعها الطابعة</td>
+          </tr>
+          <tr>
+            <td><strong>القيم الشائعة</strong></td>
+            <td>72 ppi (ويب) | 96 ppi (ويندوز) | 144+ ppi (شاشات Retina)</td>
+            <td>150 dpi (طباعة عادية) | 300 dpi (طباعة احترافية) | 600+ dpi (جودة عالية)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">الفرق البصري بين الدقات</h3>
+    <div class="ppi-demo">
+      <div class="ppi-card">
+        <div class="pixel-grid grid-low">
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+        </div>
+        <h3>72 PPI</h3>
+        <p>الويب والشاشات القديمة</p>
+        <span class="tag tag-web">ويب</span>
+      </div>
+      <div class="ppi-card">
+        <div class="pixel-grid grid-med">
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+        </div>
+        <h3>150 DPI</h3>
+        <p>طباعة عادية / مؤقتة</p>
+        <span class="tag tag-screen">طباعة عادية</span>
+      </div>
+      <div class="ppi-card">
+        <div class="pixel-grid grid-hi">
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+          <div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div><div class="px"></div>
+        </div>
+        <h3>300 DPI</h3>
+        <p>طباعة احترافية عالية الجودة</p>
+        <span class="tag tag-print">طباعة احترافية</span>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="bulb">💡</div>
+      <p><strong>لماذا 72 PPI للويب؟</strong> لأن الشاشات القديمة كانت تعرض 72 بكسل في كل بوصة. اليوم أغلب الشاشات 96–144+ PPI، لكن المعيار الرقمي لا يزال 72 أو 96 لأن حجم الملف أهم من الدقة الزائدة على الشاشة.</p>
+    </div>
+
+    <div class="compare">
+      <table>
+        <thead><tr><th class="th-label">الاستخدام</th><th class="th-rgb">القيمة</th><th class="th-cmyk">السبب</th></tr></thead>
+        <tbody>
+          <tr><td><strong>صور الويب والمواقع</strong></td><td>72–96 PPI</td><td>ملف خفيف، الشاشة لا تستفيد من أكثر</td></tr>
+          <tr><td><strong>صور السوشيال ميديا</strong></td><td>72–96 PPI</td><td>منصات تضغط الصور تلقائياً</td></tr>
+          <tr><td><strong>طباعة منزلية / مؤقتة</strong></td><td>150 DPI</td><td>جودة كافية لطباعة سريعة</td></tr>
+          <tr><td><strong>طباعة احترافية (كروت، بروشور)</strong></td><td>300 DPI</td><td>المعيار الذهبي للطباعة الواضحة</td></tr>
+          <tr><td><strong>اللافتات الكبيرة (بانرات)</strong></td><td>72–150 DPI</td><td>تُشاهَد من بعيد، جودة منخفضة تكفي</td></tr>
+          <tr><td><strong>الكتب والمجلات</strong></td><td>300–600 DPI</td><td>تُقرأ عن قرب وتحتاج وضوحاً تاماً</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="rule-box">
+      <div class="rule-name">📐 حساب حجم الصورة</div>
+      <p>إذا أردت طباعة صورة 10×10 سم بجودة 300 DPI:<br>
+      10 سم = 3.937 بوصة × 300 = <strong>1181 بكسل لكل ضلع على الأقل.</strong><br>
+      الصيغة: (الحجم بالبوصة) × DPI = عدد البكسلات المطلوبة</p>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">Vector vs Raster — الفارق المهم</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">🔷</div>
+        <h3>Vector (متجه)</h3>
+        <p>معادلات رياضية تحدد الأشكال. يمكن تكبيره بلا حدود دون تشويه. أمثلة: SVG, AI, EPS. مثالي للشعارات والأيقونات.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🖼️</div>
+        <h3>Raster (نقطي)</h3>
+        <p>شبكة من البكسلات. التكبير يُظهر التعرج (Pixelation). أمثلة: JPEG, PNG, GIF. مثالي للصور الفوتوغرافية.</p>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="bulb">📌</div>
+      <p>الشعار يجب أن يكون دائماً <strong>Vector</strong> — لأنه يُستخدم بأحجام مختلفة: من بطاقة عمل صغيرة إلى لافتة ضخمة.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 5 ==================== -->
+<section class="chapter" id="ch5">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٥</div> الخط والطباعة</div>
+    <h2>التايبوغرافي — لغة الخط</h2>
+    <p class="intro">الخط يحمل 95% من المحتوى البصري. اختيار الخط الخطأ يُفسد التصميم حتى لو كان كل شيء آخر مثالياً.</p>
+
+    <div class="cards">
+      <div class="card">
+        <div class="icon" style="font-family:serif;font-size:2.5rem">A</div>
+        <h3>Serif (مع أذنية)</h3>
+        <p>خطوط كلاسيكية مع "أذنيات" صغيرة في نهايات الحروف. تبدو رسمية وموثوقة. مثال: Times New Roman، Georgia.</p>
+      </div>
+      <div class="card">
+        <div class="icon" style="font-family:sans-serif;font-size:2.5rem;font-weight:300">A</div>
+        <h3>Sans-Serif (بدون أذنية)</h3>
+        <p>نظيفة وحديثة. الأكثر استخداماً في الويب والتطبيقات. مثال: Helvetica، Open Sans.</p>
+      </div>
+      <div class="card">
+        <div class="icon" style="font-family:monospace;font-size:2rem">A_</div>
+        <h3>Monospace</h3>
+        <p>كل حرف بعرض متساوٍ. تُستخدم في الكود والترمينال. مثال: Courier، Fira Code.</p>
+      </div>
+      <div class="card">
+        <div class="icon" style="font-style:italic;font-size:2rem">𝒜</div>
+        <h3>Script / Handwriting</h3>
+        <p>تحاكي الكتابة اليدوية. تضيف دفئاً وشخصية. لكن لا تستخدمها للنصوص الطويلة — صعبة القراءة.</p>
+      </div>
+    </div>
+
+    <div class="type-demo">
+      <h3>تسلسل أحجام الخط (Typography Scale)</h3>
+      <div class="font-sizes">
+        <div class="font-row"><span class="sz">12px</span><span class="sample" style="font-size:12px">نص صغير جداً — تعليقات توضيحية</span></div>
+        <div class="font-row"><span class="sz">14px</span><span class="sample" style="font-size:14px">نص عادي — جسم المقال والوصف</span></div>
+        <div class="font-row"><span class="sz">16px</span><span class="sample" style="font-size:16px">النص الأساسي المثالي للقراءة</span></div>
+        <div class="font-row"><span class="sz">20px</span><span class="sample" style="font-size:20px">عنوان فرعي صغير</span></div>
+        <div class="font-row"><span class="sz">24px</span><span class="sample" style="font-size:24px;font-weight:700">عنوان فرعي</span></div>
+        <div class="font-row"><span class="sz">32px</span><span class="sample" style="font-size:32px;font-weight:900">عنوان رئيسي</span></div>
+        <div class="font-row"><span class="sz">48px+</span><span class="sample" style="font-size:clamp(36px,5vw,48px);font-weight:900;color:var(--accent)">Hero Heading</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">مصطلحات التايبوغرافي</h3>
+    <ul class="styled-list">
+      <li><strong>Font Size (حجم الخط)</strong> <span>— يُقاس بالـ pt في الطباعة أو px/rem في الويب. 16px = 12pt تقريباً.</span></li>
+      <li><strong>Line Height (ارتفاع السطر)</strong> <span>— المسافة بين الأسطر. القيمة المثالية للقراءة: 1.5 × حجم الخط.</span></li>
+      <li><strong>Kerning (المسافة بين الأحرف)</strong> <span>— تعديل المسافة بين حرفين بعينهما لتحسين المظهر.</span></li>
+      <li><strong>Tracking / Letter Spacing</strong> <span>— المسافة الموحدة بين جميع الأحرف. العناوين الكبيرة تحتاج tracking سالباً أحياناً.</span></li>
+      <li><strong>Weight (سماكة الخط)</strong> <span>— من 100 (Thin) إلى 900 (Black). 400 = Regular, 700 = Bold.</span></li>
+      <li><strong>Leading</strong> <span>— مصطلح طباعي قديم = Line Height. يُستخدم في InDesign وIllustrator.</span></li>
+      <li><strong>Hierarchy (التسلسل الهرمي)</strong> <span>— استخدام الحجم والوزن لتوجيه القارئ من الأهم للأقل أهمية.</span></li>
+    </ul>
+
+    <div class="rule-box">
+      <div class="rule-name">قاعدة تزاوج الخطوط</div>
+      <p>لا تستخدم أكثر من خطّين في التصميم. الأفضل: خط Serif + خط Sans-Serif. مثال: Cairo للعناوين + Tajawal للنص.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 6 ==================== -->
+<section class="chapter" id="ch6">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٦</div> المساحة والتخطيط</div>
+    <h2>Grid, Spacing & Layout</h2>
+    <p class="intro">التخطيط هو هيكل التصميم. بدونه، حتى الألوان والخطوط الجميلة تبدو فوضوية.</p>
+
+    <div class="spacing-demo">
+      <h3>نظام المسافات (4px Base System)</h3>
+      <div class="spacing-row"><span class="sz-label">4px</span><div class="spacing-bar" style="width:30px">xs</div></div>
+      <div class="spacing-row"><span class="sz-label">8px</span><div class="spacing-bar" style="width:60px">sm</div></div>
+      <div class="spacing-row"><span class="sz-label">16px</span><div class="spacing-bar" style="width:100px">md</div></div>
+      <div class="spacing-row"><span class="sz-label">24px</span><div class="spacing-bar" style="width:140px">lg</div></div>
+      <div class="spacing-row"><span class="sz-label">32px</span><div class="spacing-bar" style="width:180px">xl</div></div>
+      <div class="spacing-row"><span class="sz-label">48px</span><div class="spacing-bar" style="width:240px">2xl</div></div>
+      <div class="spacing-row"><span class="sz-label">64px</span><div class="spacing-bar" style="width:300px">3xl</div></div>
+    </div>
+
+    <div class="highlight">
+      <div class="bulb">💡</div>
+      <p>استخدم مضاعفات الـ 8 (8, 16, 24, 32, 48, 64) لمسافاتك دائماً. هذا يخلق <strong>انسجاماً رياضياً غير واضح</strong> يشعر به المستخدم دون أن يدركه.</p>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">نظام الشبكة (Grid System)</h3>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">⬜</div>
+        <h3>12-Column Grid</h3>
+        <p>المعيار في تصميم الويب. قابل للقسمة على 1، 2، 3، 4، 6، 12 — مرونة كاملة.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📐</div>
+        <h3>Gutters (الفراغات)</h3>
+        <p>المسافة بين الأعمدة. عادةً 16–32px. توحيدها يخلق ترتيباً واضحاً.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📏</div>
+        <h3>Margins (الهوامش)</h3>
+        <p>المسافة بين حدود الصفحة والمحتوى. تحمي التصميم من "الاختناق".</p>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">قوانين التخطيط المهمة</h3>
+    <div class="rule-box">
+      <div class="rule-name">قانون التقارب (Law of Proximity)</div>
+      <p>العناصر المتقاربة تبدو مرتبطة ببعضها. اجعل الصورة قريبة من وصفها، والعنوان قريباً من النص.</p>
+    </div>
+    <div class="rule-box" style="border-right-color:var(--accent2)">
+      <div class="rule-name" style="color:var(--accent2)">قانون المساحة السلبية (White Space)</div>
+      <p>المساحة الفارغة ليست هدراً — هي راحة للعين. التصاميم المزدحمة تُجهد المستخدم وتقلل من التأثير.</p>
+    </div>
+    <div class="rule-box" style="border-right-color:var(--accent4)">
+      <div class="rule-name" style="color:var(--accent4)">قاعدة الأثلاث (Rule of Thirds)</div>
+      <p>قسّم التصميم إلى 3 أعمدة و3 صفوف. ضع العناصر الرئيسية عند تقاطع الخطوط لتصميم أكثر جاذبية.</p>
+    </div>
+    <div class="rule-box" style="border-right-color:var(--accent3)">
+      <div class="rule-name" style="color:var(--accent3)">النسبة الذهبية (Golden Ratio)</div>
+      <p>النسبة 1:1.618 موجودة في الطبيعة وتُنتج تناسقاً جمالياً طبيعياً. استخدمها في أحجام العناصر والمسافات.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 7 ==================== -->
+<section class="chapter" id="ch7">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٧</div> المبادئ المتقدمة</div>
+    <h2>مبادئ التصميم المتقدمة</h2>
+    <p class="intro">هذه المبادئ هي ما يُفرّق بين المصمم المبتدئ والمحترف.</p>
+
+    <h3 style="margin:0 0 1rem;font-weight:700">التباين (Contrast) والوضوح</h3>
+    <div class="contrast-demo">
+      <div class="con-box con-bad">
+        <div class="con-label">❌ تباين ضعيف</div>
+        <div class="con-text">نص صعب القراءة</div>
+        <div class="con-ratio">نسبة التباين: 1.5:1 (فاشل)</div>
+      </div>
+      <div class="con-box con-good">
+        <div class="con-label">✅ تباين قوي</div>
+        <div class="con-text">نص سهل القراءة</div>
+        <div class="con-ratio">نسبة التباين: 16:1 (ممتاز)</div>
+      </div>
+    </div>
+    <div class="highlight">
+      <div class="bulb">♿</div>
+      <p>معيار إمكانية الوصول <strong>WCAG AA</strong> يتطلب نسبة تباين 4.5:1 للنص العادي. يمكنك فحص أي لونين على موقع <strong>webaim.org/resources/contrastchecker</strong></p>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">التسلسل الهرمي البصري</h3>
+    <ul class="styled-list">
+      <li><strong>الحجم</strong> <span>— الأكبر = الأهم. العنوان أكبر من النص الأساسي.</span></li>
+      <li><strong>اللون</strong> <span>— اللون المتباين والمشبّع يجذب العين أولاً.</span></li>
+      <li><strong>الموضع</strong> <span>— الأعلى يُشاهَد قبل الأسفل، اليمين قبل اليسار (في العربية).</span></li>
+      <li><strong>المساحة</strong> <span>— ما حوله مساحة أكبر يبدو أهم.</span></li>
+      <li><strong>الوزن</strong> <span>— Bold يبرز قبل Regular.</span></li>
+    </ul>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">قانون Gestalt البصري</h3>
+    <div class="cards">
+      <div class="card"><div class="icon">◉◉◉</div><h3>التشابه</h3><p>العناصر المتشابهة (لوناً أو شكلاً) تبدو مجموعة واحدة.</p></div>
+      <div class="card"><div class="icon">⬤⬤&nbsp;&nbsp;⬤⬤</div><h3>التقارب</h3><p>العناصر المتقاربة تبدو مرتبطة ببعضها.</p></div>
+      <div class="card"><div class="icon">▲</div><h3>الاستمرارية</h3><p>العين تتبع الخطوط والمنحنيات بشكل طبيعي.</p></div>
+      <div class="card"><div class="icon">◻</div><h3>الإغلاق</h3><p>العقل يُكمل الأشكال الناقصة تلقائياً.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 8 ==================== -->
+<section class="chapter" id="ch8">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٨</div> صيغ الملفات</div>
+    <h2>متى تستخدم أي صيغة؟</h2>
+    <p class="intro">اختيار الصيغة الخطأ يُضيّع جودة تصميمك أو يُضخّم حجم ملفاتك بلا داعٍ.</p>
+
+    <div class="formats">
+      <div class="fmt" style="border-color:rgba(78,205,196,0.3)">
+        <div class="ext" style="color:var(--accent2)">PNG</div>
+        <p>شفافية + لا تشويه. مثالي للشعارات والأيقونات على الويب.</p>
+      </div>
+      <div class="fmt" style="border-color:rgba(255,107,53,0.3)">
+        <div class="ext" style="color:var(--accent)">JPEG</div>
+        <p>أصغر حجماً. للصور الفوتوغرافية. لا يدعم الشفافية.</p>
+      </div>
+      <div class="fmt" style="border-color:rgba(255,230,109,0.3)">
+        <div class="ext" style="color:var(--accent3)">SVG</div>
+        <p>Vector. يكبر بلا حدود. مثالي للشعارات والأيقونات والرسوم.</p>
+      </div>
+      <div class="fmt" style="border-color:rgba(168,85,247,0.3)">
+        <div class="ext" style="color:var(--accent4)">WebP</div>
+        <p>أحدث صيغة للويب. أصغر من PNG وJPEG مع جودة أفضل.</p>
+      </div>
+      <div class="fmt">
+        <div class="ext">GIF</div>
+        <p>صور متحركة بسيطة. ألوان محدودة (256 فقط).</p>
+      </div>
+      <div class="fmt">
+        <div class="ext">PDF</div>
+        <p>للطباعة والمشاركة. يحافظ على التنسيق على أي جهاز.</p>
+      </div>
+      <div class="fmt">
+        <div class="ext">TIFF</div>
+        <p>جودة عالية للطباعة. حجم ضخم جداً — للاستوديوهات فقط.</p>
+      </div>
+      <div class="fmt">
+        <div class="ext">EPS/AI</div>
+        <p>Vector للطباعة الاحترافية. يُفتح بـ Illustrator.</p>
+      </div>
+    </div>
+
+    <div class="compare">
+      <table>
+        <thead><tr>
+          <th class="th-label">الموقف</th>
+          <th class="th-rgb">الصيغة المثلى</th>
+          <th class="th-cmyk">السبب</th>
+        </tr></thead>
+        <tbody>
+          <tr><td><strong>شعار على موقع</strong></td><td>SVG أو PNG</td><td>شفافية + جودة عالية</td></tr>
+          <tr><td><strong>صورة فوتوغرافية للويب</strong></td><td>WebP أو JPEG</td><td>حجم صغير</td></tr>
+          <tr><td><strong>إرسال للمطبعة</strong></td><td>PDF أو TIFF أو EPS</td><td>جودة عالية + يدعم CMYK</td></tr>
+          <tr><td><strong>أيقونة على تطبيق</strong></td><td>SVG أو PNG @2x</td><td>وضوح على شاشات Retina</td></tr>
+          <tr><td><strong>مشاركة عرض تقديمي</strong></td><td>PDF</td><td>يبدو متطابقاً على كل الأجهزة</td></tr>
+          <tr><td><strong>انيميشن بسيط</strong></td><td>GIF أو WebP أو MP4</td><td>GIF بدون صوت، WebP أخف</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 9 ==================== -->
+<section class="chapter" id="ch9">
+  <div class="container">
+    <div class="chapter-label"><div class="num">٩</div> الأدوات</div>
+    <h2>أدوات التصميم — كل ما تحتاجه</h2>
+    <p class="intro">لكل مهمة أداة مناسبة. لا توجد أداة "أفضل" على الإطلاق — بل أداة أنسب للمهمة.</p>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="t-icon">🟣</div>
+        <h3>Figma</h3>
+        <p>تصميم UI/UX واجهات</p>
+        <span class="t-tag" style="background:rgba(168,85,247,0.15);color:var(--accent4)">مجاني جزئياً</span>
+      </div>
+      <div class="tool-card">
+        <div class="t-icon">🔵</div>
+        <h3>Adobe Illustrator</h3>
+        <p>تصميم Vector + شعارات</p>
+        <span class="t-tag" style="background:rgba(255,107,53,0.15);color:var(--accent)">مدفوع</span>
+      </div>
+      <div class="tool-card">
+        <div class="t-icon">🔵</div>
+        <h3>Adobe Photoshop</h3>
+        <p>تعديل الصور + تصميم نقطي</p>
+        <span class="t-tag" style="background:rgba(255,107,53,0.15);color:var(--accent)">مدفوع</span>
+      </div>
+      <div class="tool-card">
+        <div class="t-icon">🔴</div>
+        <h3>Adobe InDesign</h3>
+        <p>مطبوعات + كتب + مجلات</p>
+        <span class="t-tag" style="background:rgba(255,107,53,0.15);color:var(--accent)">مدفوع</span>
+      </div>
+      <div class="tool-card">
+        <div class="t-icon">🟡</div>
+        <h3>Canva</h3>
+        <p>تصميم سريع سهل للجميع</p>
+        <span class="t-tag" style="background:rgba(78,205,196,0.15);color:var(--accent2)">مجاني جزئياً</span>
+      </div>
+      <div class="tool-card">
+        <div class="t-icon">⚫</div>
+        <h3>Affinity Designer</h3>
+        <p>بديل Illustrator بسعر واحد</p>
+        <span class="t-tag" style="background:rgba(255,230,109,0.15);color:var(--accent3)">دفع مرة واحدة</span>
+      </div>
+      <div class="tool-card">
+        <div class="t-icon">🟢</div>
+        <h3>Inkscape</h3>
+        <p>Vector مجاني مفتوح المصدر</p>
+        <span class="t-tag" style="background:rgba(78,205,196,0.15);color:var(--accent2)">مجاني ١٠٠٪</span>
+      </div>
+      <div class="tool-card">
+        <div class="t-icon">🔶</div>
+        <h3>GIMP</h3>
+        <p>بديل Photoshop مجاني</p>
+        <span class="t-tag" style="background:rgba(78,205,196,0.15);color:var(--accent2)">مجاني ١٠٠٪</span>
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-weight:700">أدوات مساعدة لا غنى عنها</h3>
+    <div class="cards">
+      <div class="card"><div class="icon">🎨</div><h3>Coolors.co</h3><p>توليد باليتات ألوان متناسقة بضغطة زر.</p></div>
+      <div class="card"><div class="icon">🔤</div><h3>Google Fonts</h3><p>مئات الخطوط المجانية للاستخدام.</p></div>
+      <div class="card"><div class="icon">📐</div><h3>Fontpair.co</h3><p>اقتراحات تزاوج الخطوط المناسبة.</p></div>
+      <div class="card"><div class="icon">⚡</div><h3>Unsplash / Pexels</h3><p>صور مجانية عالية الجودة بدون حقوق.</p></div>
+      <div class="card"><div class="icon">🔲</div><h3>undraw.co</h3><p>رسوم توضيحية SVG مجانية قابلة للتخصيص.</p></div>
+      <div class="card"><div class="icon">✅</div><h3>WebAIM Contrast</h3><p>فحص نسبة تباين الألوان لمعايير الإتاحة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CHAPTER 10 ==================== -->
+<section class="chapter" id="ch10">
+  <div class="container">
+    <div class="chapter-label"><div class="num">١٠</div> سير العمل</div>
+    <h2>كيف تُنجز تصميماً من الصفر</h2>
+    <p class="intro">المصمّم المحترف لا يفتح البرنامج أولاً. هناك خطوات واضحة قبل أي كليك.</p>
+
+    <div class="process">
+      <div class="step">
+        <div class="step-num">١</div>
+        <div class="step-content">
+          <h3>Brief — فهم المهمة</h3>
+          <p>ما المطلوب؟ من العميل؟ من الجمهور المستهدف؟ ما الرسالة؟ ما القيود (الميزانية، المدة، الوسيط)؟ دوّن كل شيء قبل البدء.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٢</div>
+        <div class="step-content">
+          <h3>Research — البحث والإلهام</h3>
+          <p>ابحث عن تصاميم مشابهة على Behance وDribbble وPinterest. لا تقلّد — استلهم. ابحث عن الاتجاهات السائدة والمنافسين.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٣</div>
+        <div class="step-content">
+          <h3>Moodboard — لوحة المزاج</h3>
+          <p>اجمع صوراً وألواناً وخطوطاً تعكس الاتجاه المرغوب. هذه المرحلة تُوحّد رؤيتك ورؤية العميل قبل البدء.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٤</div>
+        <div class="step-content">
+          <h3>Sketch — الرسم اليدوي</h3>
+          <p>ارسم أفكارك بسرعة على الورق أولاً. لا تفكر في التفاصيل — فقط الهيكل العام (wireframe). الورق أسرع من البرنامج.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٥</div>
+        <div class="step-content">
+          <h3>Design — التنفيذ الرقمي</h3>
+          <p>الآن افتح برنامجك. ابدأ بالهيكل (layout)، ثم الألوان، ثم الخطوط، ثم التفاصيل. لا تبدأ من التفاصيل الصغيرة.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٦</div>
+        <div class="step-content">
+          <h3>Feedback — المراجعة</h3>
+          <p>شارك التصميم للمراجعة. استمع للملاحظات بموضوعية — لا تتعلق عاطفياً بعملك. الهدف الخدمة، لا الإبداع الشخصي.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٧</div>
+        <div class="step-content">
+          <h3>Iterate — التكرار والتحسين</h3>
+          <p>عدّل وحسّن بناءً على الملاحظات. التصميم الجيد نادراً ما يكون من المحاولة الأولى.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">٨</div>
+        <div class="step-content">
+          <h3>Export — التصدير الصحيح</h3>
+          <p>صدّر بالصيغة والدقة المناسبة للاستخدام (RGB للويب، CMYK للطباعة). احتفظ دائماً بالملف الأصلي القابل للتعديل.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight">
+      <div class="bulb">🚀</div>
+      <p><strong>نصيحة أخيرة:</strong> أفضل طريقة للتعلم هي التطبيق. صمّم شيئاً كل يوم — حتى لو كان بوست بسيط أو أيقونة صغيرة. بعد 100 تصميم ستجد نفسك محترفاً بشكل طبيعي.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card" style="border-color:rgba(255,107,53,0.3)">
+        <div class="icon">📚</div>
+        <h3>مصادر للتعمق</h3>
+        <p>Behance.net | Dribbble.com | Designspiration | Nielsen Norman Group (UX) | Smashing Magazine</p>
+      </div>
+      <div class="card" style="border-color:rgba(78,205,196,0.3)">
+        <div class="icon">🏆</div>
+        <h3>بناء Portfolio</h3>
+        <p>ابدأ بمشاريع وهمية. أعد تصميم تطبيقات موجودة. شارك على Behance. Portfolio ضعيف أفضل من لا شيء.</p>
+      </div>
+      <div class="card" style="border-color:rgba(168,85,247,0.3)">
+        <div class="icon">📈</div>
+        <h3>مسار النمو</h3>
+        <p>مبتدئ → Canva وFigma → Illustrator → Portfolio → Freelance أو وظيفة. كل مرحلة تبني على ما قبلها.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>كورس التصميم الشامل · من الصفر إلى الاحتراف</p>
+  <p style="margin-top:0.5rem">تذكّر: كل مصمّم محترف كان مبتدئاً في يوم ما 🎨</p>
+  <p style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border)">
+    © 2025 <span>ناصر الحمد</span> · جميع الحقوق محفوظة<br>
+    <a href="https://x.com/jbr_sy" target="_blank" style="color:var(--muted);text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">𝕏 @jbr_sy</a>
+  </p>
+</footer>
+
+</body>
+</html>
